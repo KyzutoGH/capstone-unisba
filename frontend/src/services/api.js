@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 // Create axios instance
 const api = axios.create({
@@ -37,23 +37,23 @@ api.interceptors.response.use(
 
 // Auth services
 export const authService = {
-  login: (data) => api.post('/api/auth/login', data),
-  register: (data) => api.post('/api/auth/register', data),
-  getCurrentUser: () => api.get('/api/auth/me'),
-  updateProfile: (data) => api.put('/api/auth/profile', data),
-  changePassword: (data) => api.put('/api/auth/change-password', data),
+  login: (data) => api.post('/auth/login', data),           // hapus /api
+  register: (data) => api.post('/auth/register', data),     // hapus /api
+  getCurrentUser: () => api.get('/auth/me'),                // hapus /api
+  updateProfile: (data) => api.put('/auth/profile', data),  // hapus /api
+  changePassword: (data) => api.put('/auth/change-password', data), // hapus /api
 };
 
 // Student services
 export const studentService = {
-  getAllStudents: (params) => api.get('/api/students', { params }),
-  getStudentById: (id) => api.get(`/api/students/${id}`),
-  createStudent: (data) => api.post('/api/students', data),
-  updateStudent: (id, data) => api.put(`/api/students/${id}`, data),
-  deleteStudent: (id) => api.delete(`/api/students/${id}`),
+  getAllStudents: (params) => api.get('/api/students', { params }),      // hapus /api
+  getStudentById: (id) => api.get(`/api/students/${id}`),               // hapus /api
+  createStudent: (data) => api.post('/api/students', data),             // hapus /api
+  updateStudent: (id, data) => api.put(`/api/students/${id}`, data),    // hapus /api
+  deleteStudent: (id) => api.delete(`/api/students/${id}`),             // hapus /api
 };
 
-// Prediction services
+// Prediction services (hapus /api)
 export const predictionService = {
   getStudentPredictions: (studentId) => api.get(`/api/predictions/student/${studentId}`),
   getPredictionById: (id) => api.get(`/api/predictions/${id}`),
@@ -62,7 +62,7 @@ export const predictionService = {
   deletePrediction: (id) => api.delete(`/api/predictions/${id}`),
 };
 
-// Dashboard services
+// Dashboard services (hapus /api)
 export const dashboardService = {
   getDashboardStats: () => api.get('/api/dashboard/stats'),
 };

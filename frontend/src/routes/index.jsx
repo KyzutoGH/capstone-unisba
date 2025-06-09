@@ -17,6 +17,7 @@ const Profile = lazy(() => import('../pages/Profile'));
 const Login = lazy(() => import('../pages/Login'));
 const Register = lazy(() => import('../pages/Register'));
 const About = lazy(() => import('../pages/About'));
+const LandingPage = lazy(() => import('../pages/LandingPage'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
 // Loading component
@@ -56,14 +57,35 @@ const PublicRoute = ({ children }) => {
   return children;
 };
 
+// Landing route (show landing page for non-authenticated users)
+const LandingRoute = ({ children }) => {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (user) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  return children;
+};
+
 // Create router
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <Navigate to="/dashboard" replace />,
+    element: (
+      <LandingRoute>
+        <Suspense fallback={<Loading />}>
+          <LandingPage />
+        </Suspense>
+      </LandingRoute>
+    ),
   },
   {
-    path: '/',
+    path: '/app',
     element: (
       <ProtectedRoute>
         <MainLayout />
@@ -136,6 +158,129 @@ export const router = createBrowserRouter([
       },
       {
         path: 'about',
+        element: (
+          <Suspense fallback={<Loading />}>
+            <About />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+  // Protected routes with MainLayout
+  {
+    path: '/dashboard',
+    element: (
+      <ProtectedRoute>
+        <MainLayout />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Dashboard />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+  {
+    path: '/students',
+    element: (
+      <ProtectedRoute>
+        <MainLayout />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Students />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'add',
+        element: (
+          <Suspense fallback={<Loading />}>
+            <StudentForm />
+          </Suspense>
+        ),
+      },
+      {
+        path: ':id',
+        element: (
+          <Suspense fallback={<Loading />}>
+            <StudentDetail />
+          </Suspense>
+        ),
+      },
+      {
+        path: ':id/edit',
+        element: (
+          <Suspense fallback={<Loading />}>
+            <StudentForm />
+          </Suspense>
+        ),
+      },
+      {
+        path: ':id/predict',
+        element: (
+          <Suspense fallback={<Loading />}>
+            <PredictionForm />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+  {
+    path: '/predictions/:id',
+    element: (
+      <ProtectedRoute>
+        <MainLayout />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <PredictionDetail />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+  {
+    path: '/profile',
+    element: (
+      <ProtectedRoute>
+        <MainLayout />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Profile />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+  {
+    path: '/about',
+    element: (
+      <ProtectedRoute>
+        <MainLayout />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        index: true,
         element: (
           <Suspense fallback={<Loading />}>
             <About />

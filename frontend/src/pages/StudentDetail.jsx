@@ -21,7 +21,7 @@ import { formatDate, formatDateTime, formatGender } from '../utils/formatters';
 const StudentDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  
+
   const [student, setStudent] = useState(null);
   const [predictions, setPredictions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -31,19 +31,23 @@ const StudentDetail = () => {
     const fetchStudentData = async () => {
       try {
         setLoading(true);
-        setError(null);
 
         // Fetch student details
         const studentResponse = await studentService.getStudentById(id);
         setStudent(studentResponse.data.data);
 
-        // Fetch student predictions
+        // Fetch student predictions - PERBAIKAN DI SINI
         const predictionsResponse = await predictionService.getStudentPredictions(id);
-        setPredictions(predictionsResponse.data.data);
+        console.log("Predictions data:", predictionsResponse.data); // Debugging
+
+        // Ambil data dari response.data.data.predictions, bukan response.data.data
+        const predictionsData = predictionsResponse.data.data?.predictions || [];
+        setPredictions(predictionsData);
+
       } catch (err) {
         console.error('Error fetching student data:', err);
-        setError(err.response?.status === 404 
-          ? 'Siswa tidak ditemukan' 
+        setError(err.response?.status === 404
+          ? 'Siswa tidak ditemukan'
           : 'Gagal memuat data siswa. Silakan coba lagi nanti.'
         );
       } finally {
@@ -95,7 +99,7 @@ const StudentDetail = () => {
           <HiOutlineArrowLeft className="mr-2 h-4 w-4" />
           Kembali ke Daftar Siswa
         </button>
-        
+
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h1 className="text-2xl font-semibold text-gray-900">
@@ -196,14 +200,14 @@ const StudentDetail = () => {
         <div className="lg:col-span-2 space-y-6">
           {/* Latest Prediction Detail */}
           {latestPrediction && (
-            <Card title="Prediksi Terbaru" 
-                  headerActions={
-                    <Link to={`/predictions/${latestPrediction.id}`}>
-                      <Button variant="outline" size="sm">
-                        Lihat Detail
-                      </Button>
-                    </Link>
-                  }>
+            <Card title="Prediksi Terbaru"
+              headerActions={
+                <Link to={`/predictions/${latestPrediction.id}`}>
+                  <Button variant="outline" size="sm">
+                    Lihat Detail
+                  </Button>
+                </Link>
+              }>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 <div>
                   <p className="text-sm font-medium text-gray-900">Skor Prediksi</p>
@@ -259,8 +263,8 @@ const StudentDetail = () => {
 
           {/* Intervention Recommendations */}
           {latestPrediction?.interventionRecommendations && (
-            <InterventionRecommendations 
-              recommendations={latestPrediction.interventionRecommendations} 
+            <InterventionRecommendations
+              recommendations={latestPrediction.interventionRecommendations}
             />
           )}
 

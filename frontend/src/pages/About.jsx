@@ -26,24 +26,29 @@ const About = () => {
 
   const team = [
     {
-      name: 'Andi Prasetyo',
-      role: 'Project Leader & Full-Stack Developer',
-      image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+      name: 'Muhammad Ikhsan',
+      role: 'Project Manager, Machine Learning Engineer',
+      image: '/images/ikhsan.jpg',
     },
     {
-      name: 'Budi Santoso',
+      name: 'Moch Ichwan Alif Kurniawan',
       role: 'Machine Learning Engineer',
-      image: 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+      image: '/images/alif.jpg',
     },
     {
-      name: 'Cindy Wijaya',
-      role: 'Front-End Developer',
-      image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+      name: 'Adhi Eka Syahputra',
+      role: 'Machine Learning Engineer',
+      image: '/images/adhi.jpg',
     },
     {
-      name: 'Deni Kurniawan',
+      name: 'Alfian Anwar Shodiqi',
       role: 'Back-End Developer',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+      image: '/images/diki.jpg',
+    },
+    {
+      name: 'Jihan Khansa Nadhila',
+      role: 'Front-End Developer',
+      image: '/images/jihan.jpg',
     },
   ];
 

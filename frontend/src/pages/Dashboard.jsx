@@ -47,10 +47,11 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchDashboardStats = async () => {
       try {
-        setLoading(true);
-        const response = await dashboardService.getDashboardStats();
-        setStats(response.data.data);
-        setError(null);
+      setLoading(true);
+      const response = await dashboardService.getDashboardStats();
+      console.log('Dashboard Stats Response:', response.data.data); // Add this line
+      setStats(response.data.data);
+      setError(null);
       } catch (err) {
         console.error('Error fetching dashboard stats:', err);
         if (err.response?.status === 401) {

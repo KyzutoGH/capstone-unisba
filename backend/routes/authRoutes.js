@@ -38,6 +38,9 @@ const upload = multer({
   },
 });
 
+// Tambahin ini di authRoutes.js buat testing
+router.get('/test', (req, res) => res.json({ message: 'Auth routes jalan!' }));
+
 // Auth routes
 router.post('/register', validate(registerSchema), register);
 router.post('/login', validate(loginSchema), login);

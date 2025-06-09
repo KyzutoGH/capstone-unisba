@@ -1,3 +1,4 @@
+//server.js
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -30,7 +31,15 @@ if (!fs.existsSync(uploadsDir)) {
 }
 
 // Serve static files from uploads directory
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(uploadsDir));
+
+// Serve static files for TensorFlow.js model
+const modelDir = path.join(__dirname, 'tfjs_model');
+if (fs.existsSync(modelDir)) {
+  app.use('/model', express.static(modelDir));
+} else {
+  console.warn('Warning: TensorFlow.js model directory not found at', modelDir);
+}
 
 // API routes
 app.use('/api/auth', authRoutes);
@@ -55,14 +64,15 @@ const startServer = async () => {
   try {
     // Test database connection
     await testDbConnection();
-    
+
     // Sync database models
     await sequelize.sync();
     console.log('Database synced successfully');
-    
+
     // Start server
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
+      console.log(`Model served at: http://localhost:${PORT}/model/model.json`);
     });
   } catch (error) {
     console.error('Failed to start server:', error);

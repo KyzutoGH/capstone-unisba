@@ -18,7 +18,7 @@ const MainLayout = () => {
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate('/'); // Redirect to landing page after logout
   };
 
   const navigation = [

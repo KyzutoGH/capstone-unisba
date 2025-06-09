@@ -287,7 +287,7 @@ const PredictionForm = () => {
       )}
 
       {/* Debug Info - Remove in production */}
-      {process.env.NODE_ENV === 'development' && (
+      {/* {process.env.NODE_ENV === 'development' && (
         <div className="mb-6 p-4 bg-gray-100 rounded-md">
           <details>
             <summary className="cursor-pointer text-sm font-medium">🔍 Debug Info (Development Only)</summary>
@@ -310,7 +310,7 @@ const PredictionForm = () => {
             </div>
           </details>
         </div>
-      )}
+      )} */}
 
       <form onSubmit={formik.handleSubmit} className="space-y-6">
         {/* Academic Information */}

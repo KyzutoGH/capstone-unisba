@@ -28,7 +28,7 @@ const getDashboardStats = async (req, res) => {
           {
             model: Student,
             as: 'student',
-            attributes: ['id', 'userId'],
+            attributes: [], // Remove attributes since we're not using them
             where: isAdmin ? {} : { userId },
             required: true,
           },
@@ -49,7 +49,6 @@ const getDashboardStats = async (req, res) => {
       });
     } catch (predictionError) {
       console.error('Error fetching prediction stats:', predictionError);
-      // Keep default stats if prediction query fails
     }
 
     // Get recent predictions
@@ -70,10 +69,9 @@ const getDashboardStats = async (req, res) => {
       });
     } catch (recentError) {
       console.error('Error fetching recent predictions:', recentError);
-      // Keep empty array if recent predictions query fails
     }
 
-    // Get class performance
+    // Get class performance - FIXED missing comma
     let classPerformance = [];
     try {
       classPerformance = await Prediction.findAll({
@@ -81,29 +79,28 @@ const getDashboardStats = async (req, res) => {
           {
             model: Student,
             as: 'student',
-            attributes: ['id', 'class'],
+            attributes: [], // Remove attributes from here since we're grouping by class
             where: isAdmin ? {} : { userId },
             required: true,
           },
         ],
         attributes: [
           [Sequelize.literal('`student`.`class`'), 'class'],
-          [Sequelize.fn('AVG', Sequelize.col('predictionScore')), 'averageScore'],
+          [Sequelize.fn('AVG', Sequelize.col('Prediction.prediction_score')), 'averageScore'], // Added missing comma
           [Sequelize.fn('COUNT', Sequelize.col('Prediction.id')), 'predictionCount'],
         ],
-        group: [Sequelize.literal('`student`.`class`')],
+        group: ['student.class'], // Simplified group by
         raw: true,
       });
 
       // Format the results
       classPerformance = classPerformance.map(item => ({
         class: item.class,
-        averageScore: parseFloat(item.averageScore).toFixed(1),
-        predictionCount: parseInt(item.predictionCount)
+        averageScore: parseFloat(item.averageScore || 0).toFixed(1),
+        predictionCount: parseInt(item.predictionCount || 0)
       }));
     } catch (classError) {
       console.error('Error fetching class performance:', classError);
-      // Keep empty array if class performance query fails
     }
 
     // Success rate by factor (simplified)
@@ -145,7 +142,6 @@ const getDashboardStats = async (req, res) => {
         });
       } catch (teacherError) {
         console.error('Error fetching teacher stats:', teacherError);
-        // Keep empty array if teacher stats query fails
       }
     }
 
