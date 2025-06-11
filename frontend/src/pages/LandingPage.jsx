@@ -1,42 +1,46 @@
-import { Link } from 'react-router-dom';
-import { 
-  HiOutlineChartBar, 
-  HiOutlineUserGroup, 
+import { Link } from "react-router-dom";
+import {
+  HiOutlineChartBar,
+  HiOutlineUserGroup,
   HiOutlineAcademicCap,
   HiOutlineLightBulb,
   HiOutlineCheckCircle,
-  HiOutlineArrowRight
-} from 'react-icons/hi';
+  HiOutlineArrowRight,
+} from "react-icons/hi";
 
 const LandingPage = () => {
   const features = [
     {
       icon: HiOutlineChartBar,
-      title: 'Prediksi Akurat',
-      description: 'Menggunakan algoritma Random Forest untuk prediksi keberhasilan belajar siswa dengan tingkat akurasi tinggi.'
+      title: "Prediksi Akurat",
+      description:
+        "Menggunakan algoritma Random Forest untuk prediksi keberhasilan belajar siswa dengan tingkat akurasi tinggi.",
     },
     {
       icon: HiOutlineUserGroup,
-      title: 'Manajemen Siswa',
-      description: 'Kelola data siswa dengan mudah dan monitor progress mereka secara real-time.'
+      title: "Manajemen Siswa",
+      description:
+        "Kelola data siswa dengan mudah dan monitor progress mereka secara real-time.",
     },
     {
       icon: HiOutlineAcademicCap,
-      title: 'Analisis Mendalam',
-      description: 'Dapatkan insight mendalam tentang faktor-faktor yang mempengaruhi keberhasilan belajar.'
+      title: "Analisis Mendalam",
+      description:
+        "Dapatkan insight mendalam tentang faktor-faktor yang mempengaruhi keberhasilan belajar.",
     },
     {
       icon: HiOutlineLightBulb,
-      title: 'Rekomendasi Cerdas',
-      description: 'Terima rekomendasi berbasis data untuk meningkatkan performa akademik siswa.'
-    }
+      title: "Rekomendasi Cerdas",
+      description:
+        "Terima rekomendasi berbasis data untuk meningkatkan performa akademik siswa.",
+    },
   ];
 
   const benefits = [
-    'Identifikasi siswa yang berisiko mengalami kesulitan belajar',
-    'Optimalkan strategi pembelajaran berdasarkan data',
-    'Tingkatkan tingkat keberhasilan siswa secara keseluruhan',
-    'Buat keputusan yang tepat berdasarkan analisis prediktif'
+    "Identifikasi siswa yang berisiko mengalami kesulitan belajar",
+    "Optimalkan strategi pembelajaran berdasarkan data",
+    "Tingkatkan tingkat keberhasilan siswa secara keseluruhan",
+    "Buat keputusan yang tepat berdasarkan analisis prediktif",
   ];
 
   return (
@@ -46,16 +50,21 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="relative z-10 pb-8 bg-transparent sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
             <header className="relative pt-6 px-4 sm:px-6 lg:px-8">
-              <nav className="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
+              <nav
+                className="relative flex items-center justify-between sm:h-10 lg:justify-start"
+                aria-label="Global"
+              >
                 <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
                   <div className="flex items-center justify-between w-full md:w-auto">
                     <div className="flex items-center">
                       <img
                         className="h-8 w-auto sm:h-10"
-                        src="/logo.svg"
-                        alt="Student Success"
+                        src="/research.png"
+                        alt="EduPredict"
                       />
-                      <span className="ml-2 text-xl font-bold text-primary-900">Student Success</span>
+                      <span className="ml-2 text-xl font-bold text-primary-900">
+                        EduPredict
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -79,11 +88,15 @@ const LandingPage = () => {
             <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
               <div className="sm:text-center lg:text-left">
                 <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                  <span className="block xl:inline">Prediksi</span>{' '}
-                  <span className="block text-primary-600 xl:inline">Keberhasilan Belajar</span>
+                  <span className="block xl:inline">Prediksi</span>{" "}
+                  <span className="block text-primary-600 xl:inline">
+                    Keberhasilan Belajar
+                  </span>
                 </h1>
                 <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                  Aplikasi berbasis machine learning yang menggunakan algoritma Random Forest untuk memprediksi keberhasilan belajar siswa dan memberikan insight untuk meningkatkan kualitas pendidikan.
+                  Aplikasi berbasis machine learning yang menggunakan algoritma
+                  Random Forest untuk memprediksi keberhasilan belajar siswa dan
+                  memberikan insight untuk meningkatkan kualitas pendidikan.
                 </p>
                 <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                   <div className="rounded-md shadow">
@@ -111,9 +124,13 @@ const LandingPage = () => {
         <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
           <div className="h-56 w-full bg-gradient-to-r from-primary-400 to-primary-600 sm:h-72 md:h-96 lg:w-full lg:h-full flex items-center justify-center">
             <div className="text-center text-white">
-              <HiOutlineAcademicCap className="mx-auto h-24 w-24 mb-4 opacity-90" />
-              <h3 className="text-2xl font-bold mb-2">Machine Learning</h3>
-              <p className="text-lg opacity-90">Random Forest Algorithm</p>
+              <img
+                src="research.png"
+                alt="Academic Cap"
+                className="mx-auto h-24 w-24 mb-4 opacity-90 filter invert"
+              />
+              <h3 className="text-2xl font-bold mb-2">EduPredict</h3>
+              <p className="text-lg opacity-90">With Random Forest Algoritm</p>
             </div>
           </div>
         </div>
@@ -123,12 +140,15 @@ const LandingPage = () => {
       <div className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
-            <h2 className="text-base text-primary-600 font-semibold tracking-wide uppercase">Fitur Unggulan</h2>
+            <h2 className="text-base text-primary-600 font-semibold tracking-wide uppercase">
+              Fitur Unggulan
+            </h2>
             <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               Teknologi Terdepan untuk Pendidikan
             </p>
             <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-              Manfaatkan kekuatan machine learning untuk memahami dan meningkatkan hasil belajar siswa.
+              Manfaatkan kekuatan machine learning untuk memahami dan
+              meningkatkan hasil belajar siswa.
             </p>
           </div>
 
@@ -139,8 +159,12 @@ const LandingPage = () => {
                   <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
                     <feature.icon className="h-6 w-6" aria-hidden="true" />
                   </div>
-                  <p className="ml-16 text-lg leading-6 font-medium text-gray-900">{feature.title}</p>
-                  <p className="mt-2 ml-16 text-base text-gray-500">{feature.description}</p>
+                  <p className="ml-16 text-lg leading-6 font-medium text-gray-900">
+                    {feature.title}
+                  </p>
+                  <p className="mt-2 ml-16 text-base text-gray-500">
+                    {feature.description}
+                  </p>
                 </div>
               ))}
             </div>
@@ -154,7 +178,7 @@ const LandingPage = () => {
           <div className="lg:w-1/2">
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               <span className="block">Mengapa Memilih</span>
-              <span className="block text-primary-600">Student Success?</span>
+              <span className="block text-primary-600">EduPredict?</span>
             </h2>
             <div className="mt-8 space-y-4">
               {benefits.map((benefit, index) => (
@@ -175,7 +199,9 @@ const LandingPage = () => {
                   <div className="w-3 h-3 bg-primary-300 rounded-full"></div>
                   <div className="w-3 h-3 bg-primary-100 rounded-full"></div>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Dashboard Preview</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Dashboard Preview
+                </h3>
                 <div className="bg-gray-100 h-32 rounded-md flex items-center justify-center">
                   <HiOutlineChartBar className="h-12 w-12 text-gray-400" />
                 </div>
@@ -196,7 +222,8 @@ const LandingPage = () => {
             <span className="block">Daftar sekarang juga.</span>
           </h2>
           <p className="mt-4 text-lg leading-6 text-primary-200">
-            Bergabunglah dengan ribuan pendidik yang telah merasakan manfaat teknologi prediktif dalam meningkatkan kualitas pembelajaran.
+            Bergabunglah dengan ribuan pendidik yang telah merasakan manfaat
+            teknologi prediktif dalam meningkatkan kualitas pembelajaran.
           </p>
           <Link
             to="/register"
@@ -215,15 +242,18 @@ const LandingPage = () => {
             <div className="flex items-center">
               <img
                 className="h-8 w-auto"
-                src="/logo.svg"
-                alt="Student Success"
+                src="/research.png"
+                alt="EduPredict"
               />
-              <span className="ml-2 text-lg font-semibold text-gray-900">Student Success</span>
+              <span className="ml-2 text-lg font-semibold text-gray-900">
+                EduPredict
+              </span>
             </div>
           </div>
           <div className="mt-8 md:mt-0 md:order-1">
             <p className="text-center text-base text-gray-400">
-              &copy; 2025 Capstone Project Team UNISBA. Aplikasi Prediksi Keberhasilan Belajar Siswa.
+              &copy; 2025 Capstone Project Team UNISBA. Aplikasi Prediksi
+              Keberhasilan Belajar Siswa.
             </p>
           </div>
         </div>

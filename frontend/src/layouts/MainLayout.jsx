@@ -61,10 +61,10 @@ const MainLayout = () => {
           <div className="flex-shrink-0 flex items-center px-4">
             <img
               className="h-8 w-auto"
-              src="/logo.svg"
-              alt="Student Success"
+              src="/research.png"
+              alt="EduPredict"
             />
-            <h1 className="ml-2 text-white font-bold text-lg">Student Success</h1>
+            <h1 className="ml-2 text-white font-bold text-lg">EduPredict</h1>
           </div>
 
           <div className="mt-5 flex-1 h-0 overflow-y-auto">
@@ -109,11 +109,11 @@ const MainLayout = () => {
           <div className="flex flex-col h-0 flex-1">
             <div className="flex items-center h-16 flex-shrink-0 px-4 bg-primary-700">
               <img
-                className="h-8 w-auto"
-                src="/logo.svg"
-                alt="Student Success"
+                className="h-8 w-auto filter invert"
+                src="/research.png"
+                alt="EduPredict"
               />
-              <h1 className="ml-2 text-white font-bold text-lg">Student Success</h1>
+              <h1 className="ml-2 text-white font-bold text-lg">EduPredict</h1>
             </div>
             <div className="flex-1 flex flex-col overflow-y-auto bg-primary-700">
               <nav className="flex-1 px-2 py-4 space-y-1">
